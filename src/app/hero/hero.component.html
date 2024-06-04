@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="m-3">
+    <h1>{{ titleHero }}</h1>
+    <img id="azzarita" src="{{ photoHero }}" alt="foto_scuola" />
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    <div class="col mb-5" *ngFor="let sezione of ListaSezioni">
+      <app-section
+        [sTitoloSection]="sezione.nomeSez"
+        [sTestoSection]="sezione.descrSez"
+        [sTestoLinkSection]="sezione.linkSez"
+      ></app-section>
+    </div>
+  </div>
+</div>
