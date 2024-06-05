@@ -1,0 +1,30 @@
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { CardComponent } from './card/card.component';
+import { HeroComponent } from './hero/hero.component';
+import { ScuolaelementareComponent } from './scuolaelementare/scuolaelementare.component';
+
+
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    RouterOutlet, 
+    NavbarComponent, 
+    CardComponent, 
+    ScuolaelementareComponent, 
+    HeroComponent, 
+    FooterComponent
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+})
+
+export class AppComponent {
+  sTestoPerNavBar = 'Scuola M.Azzarita';
+  sColorePerNavBar = 'aqua';
+  
+}
