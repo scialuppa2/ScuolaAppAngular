@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CategoriaUtente } from './categoria-utente';
 
 @Injectable({
@@ -6,40 +7,12 @@ import { CategoriaUtente } from './categoria-utente';
 })
 export class GetCategorieService {
 
-  ElencoCategorie: CategoriaUtente[] = [
-    {
-      id:1,
-      nomeCat: "Docenti",
-      descrCat: "Sezione dedicata ai docenti per la gestione delle loro classi",
-      photo: "assets/docenti.png",
-      linkCat: "Accedi"
-    },
-    {
-      id:2,
-      nomeCat: "Segreteria",
-      descrCat: "Sezione dedicata agli amministratori per la gestione della scuola",
-      photo: "assets/admin.png",
-      linkCat: "Accedi"
-    },
-    {
-      id:3,
-      nomeCat: "Allievi",
-      descrCat: "Sezione dedicata agli allievi per la prenotazione delle interrogazioni",
-      photo: "assets/studenti.png",
-      linkCat: "Accedi"
-    },
-    {
-      id:4,
-      nomeCat: "Famiglie",
-      descrCat: "Sezione dedicata alle famiglie per la gestione delle loro classi",
-      photo: "assets/family.png",
-      linkCat: "Accedi"
-    }
-  ];
+  constructor() {}
 
-  constructor() { }
+  url = "http://localhost:8080/scuola/1";
 
-  getAllCategorie(): CategoriaUtente[]{
-    return this.ElencoCategorie;
+  async getAllCategorie(): Promise<CategoriaUtente[]> { 
+    const data = await fetch(this.url); 
+    return await data.json() ?? []; 
   }
 }

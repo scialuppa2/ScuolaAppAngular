@@ -17,7 +17,7 @@ import { ScuolaelementareComponent } from './scuolaelementare/scuolaelementare.c
     CardComponent, 
     ScuolaelementareComponent, 
     HeroComponent, 
-    FooterComponent
+    FooterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
