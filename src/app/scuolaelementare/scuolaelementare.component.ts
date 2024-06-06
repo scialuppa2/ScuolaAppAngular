@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { GetCategorieService } from '../get-categorie.service';
+import { GetCategorieService } from '../services/get-categorie.service';
 import { CategoriaUtente } from '../categoria-utente';
 import { CardComponent } from '../card/card.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-scuolaelementare',
   standalone: true,
   templateUrl: './scuolaelementare.component.html',
-  imports: [CardComponent, NgFor],
+  imports: [CardComponent, NgFor, NgIf],
   styleUrls: ['./scuolaelementare.component.css'],
 })
 export class ScuolaelementareComponent {
@@ -22,4 +22,15 @@ export class ScuolaelementareComponent {
       }
     );
   }
+
+  ngOnInit(): void {
+    this.GetCategorieServiceInst.getAllCategorie2(1)
+      .then((ListaCategorie: CategoriaUtente[]) => {
+        this.ListaCategorie = ListaCategorie;
+      })
+      .catch((error) => {
+        console.error('Error fetching categories:', error);
+      });
+  }
 }
+

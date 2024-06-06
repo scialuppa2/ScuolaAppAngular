@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SezioneScuola } from './sezione-scuola';
+import { SezioneScuola } from '../sezione-scuola';
 
 @Injectable({
   providedIn: 'root'

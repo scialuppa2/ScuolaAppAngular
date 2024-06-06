@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let allievo of allievi">
+        <div class="card mb-4">
+          <div class="card-header">
+            {{ allievo.nome }} {{ allievo.cognome }}
+          </div>
+          <div class="card-body">
+            <p>Codice Fiscale: {{ allievo.codiceFiscale }}</p>
+            <p>Data di Nascita: {{ allievo.dataNascita  }}</p>
+            <p>Luogo di Nascita: {{ allievo.luogoNascita }}</p>
+            <p>Email: {{ allievo.email }}</p>
+            <p>Classe: {{ allievo.livelloClasse + allievo.sezioneClasse }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
