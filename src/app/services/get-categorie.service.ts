@@ -8,11 +8,29 @@ export class GetCategorieService {
 
   constructor() {}
 
-  url = "http://localhost:8080/scuola/1";
+  url = "http://localhost:8080/scuola/";
+  ElencoCategorie:CategoriaUtente[] = [];
 
-  async getAllCategorie(): Promise<CategoriaUtente[]> { 
-    const data = await fetch(this.url); 
-    return await data.json() ?? []; 
+  async getAllCategorie(num:any): Promise<CategoriaUtente[]> { 
+    const data = await fetch(this.url + num);
+    this.ElencoCategorie = await data.json();
+    console.log(this.ElencoCategorie);
+    return this.ElencoCategorie ?? []; 
+  }
+
+  getCategoriaById(iId:Number):CategoriaUtente | undefined{
+    if(this.ElencoCategorie.length==0)
+      return undefined;
+    else
+    return this.ElencoCategorie.find(categoria => categoria.id==iId)
+  }
+
+  async getCategoriaById2(id: number): Promise<CategoriaUtente | null> {
+    const data = await fetch(`${this.url}/${id}`);
+    if (data.ok) {
+      return await data.json();
+    }
+    return null;
   }
 
   async getAllCategorie2(num: number): Promise<CategoriaUtente[]> {

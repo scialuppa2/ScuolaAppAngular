@@ -16,21 +16,13 @@ export class ScuolaelementareComponent {
   GetCategorieServiceInst: GetCategorieService = inject(GetCategorieService);
 
   constructor() {
-    this.GetCategorieServiceInst.getAllCategorie().then(
-      (ListaCategorie: CategoriaUtente[]) => {
+    this.GetCategorieServiceInst.getAllCategorie(1)
+    .then((ListaCategorie: CategoriaUtente[]) => {
         this.ListaCategorie = ListaCategorie;
       }
     );
   }
 
-  ngOnInit(): void {
-    this.GetCategorieServiceInst.getAllCategorie2(1)
-      .then((ListaCategorie: CategoriaUtente[]) => {
-        this.ListaCategorie = ListaCategorie;
-      })
-      .catch((error) => {
-        console.error('Error fetching categories:', error);
-      });
-  }
+  
 }
 
