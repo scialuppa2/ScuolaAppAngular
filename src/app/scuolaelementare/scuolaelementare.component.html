@@ -1,10 +1,16 @@
-<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
-    <div class="col" *ngFor="let categoria of ListaCategorie">
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+    <div class="col" *ngFor="let categoriaUtente of ListaCategorie">
       <app-card
-        [sTitoloCard]="categoria.nomeCat"
-        [sImgCard]="categoria.photo"
-        [sTestoCard]="categoria.descrCat"
-        [sTestoLinkCard]="categoria.linkCat"
+        [sIdCard]="categoriaUtente.id"
+        [sTitoloCard]="categoriaUtente.nomeCat"
+        [sImgCard]="categoriaUtente.photo"
+        [sTestoCard]="categoriaUtente.descrCat"
+        [sTestoLinkCard]="categoriaUtente.linkCat"
       ></app-card>
     </div>
+    <div *ngIf="ListaCategorie.length==0">
+      <h1>Attenzione: server non disponibile !</h1>
+    </div>
   </div>
+</div>

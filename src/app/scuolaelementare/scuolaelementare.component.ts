@@ -1,23 +1,27 @@
 import { Component, inject } from '@angular/core';
+import { GetCategorieService } from '../services/get-categorie.service';
 import { CategoriaUtente } from '../categoria-utente';
-import { GetCategorieService } from '../get-categorie.service';
 import { CardComponent } from '../card/card.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-scuolaelementare',
   standalone: true,
-  imports: [CardComponent, NgFor],
   templateUrl: './scuolaelementare.component.html',
-  styleUrl: './scuolaelementare.component.css'
+  imports: [CardComponent, NgFor, NgIf],
+  styleUrls: ['./scuolaelementare.component.css'],
 })
 export class ScuolaelementareComponent {
-
-  ListaCategorie: CategoriaUtente[]=[];
+  ListaCategorie: CategoriaUtente[] = [];
   GetCategorieServiceInst: GetCategorieService = inject(GetCategorieService);
 
   constructor() {
-    this.ListaCategorie = this.GetCategorieServiceInst.getAllCategorie();
+    this.GetCategorieServiceInst.getAllCategorie(1)
+    .then((ListaCategorie: CategoriaUtente[]) => {
+        this.ListaCategorie = ListaCategorie;
+      }
+    );
   }
 
+  
 }

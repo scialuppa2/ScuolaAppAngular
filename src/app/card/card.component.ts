@@ -1,25 +1,31 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
 export class CardComponent {
+  @Input() sIdCard: number;
   @Input() sTitoloCard:string;
   @Input() sImgCard:string;
   @Input() sTestoCard:string;
   @Input() sTestoLinkCard:string;
 
+
+  sIdC=0;
   sTitoloC="nd";
   sImgC="nd";
   sTestoC="nd";
   sTestoLinkC="nd";
+  sHrefC="/login/";
 
 
   constructor(){
+    this.sIdCard = 0;
     this.sTitoloCard = 'null';
     this.sImgCard = 'null';
     this.sTestoCard = 'null';
@@ -27,6 +33,8 @@ export class CardComponent {
   }
 
   ngOnInit() {
+    if(this.sIdCard!=0)
+      this.sIdC = this.sIdCard;
     if(this.sTitoloCard!="null")
     this.sTitoloC = this.sTitoloCard;
     if(this.sImgCard!="null")
