@@ -5,6 +5,6 @@
     <p class="card-text">
       {{sTestoC}}
     </p>
-    <a href="{{sHrefC+sIdC+'/'+sTitoloC}}" class="btn btn-primary">{{sTestoLinkC}}</a>
+    <a [routerLink]="[sPathC, sIdC, sTitoloC]" class="btn btn-primary">{{sTestoLinkC}}</a>
   </div>
 </div>

@@ -5,24 +5,25 @@ import { CategoriaUtente } from '../categoria-utente';
   providedIn: 'root'
 })
 export class GetCategorieService {
-
-  constructor() {}
-
   url = "http://localhost:8080/scuola/";
   ElencoCategorie:CategoriaUtente[] = [];
 
-  async getAllCategorie(num:any): Promise<CategoriaUtente[]> { 
-    const data = await fetch(this.url + num);
-    this.ElencoCategorie = await data.json();
-    console.log(this.ElencoCategorie);
-    return this.ElencoCategorie ?? []; 
+  constructor() {}
+
+  async getAllCategorie(num: any): Promise<CategoriaUtente[]> {
+    if (this.ElencoCategorie.length === 0) {
+      const data = await fetch(this.url + num);
+      this.ElencoCategorie = await data.json();
+      console.log(this.ElencoCategorie);
+    }
+    return this.ElencoCategorie ?? [];
   }
 
-  getCategoriaById(iId:Number):CategoriaUtente | undefined{
-    if(this.ElencoCategorie.length==0)
+  getCategoriaById(iId: Number): CategoriaUtente | undefined {
+    if (this.ElencoCategorie.length == 0)
       return undefined;
     else
-    return this.ElencoCategorie.find(categoria => categoria.id==iId)
+      return this.ElencoCategorie.find(categoria => categoria.id == iId);
   }
 
   async getCategoriaById2(id: number): Promise<CategoriaUtente | null> {

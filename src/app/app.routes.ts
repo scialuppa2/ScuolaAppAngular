@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ScuolaelementareComponent } from './scuolaelementare/scuolaelementare.component';
+import { ScuolamediaComponent } from './scuolamedia/scuolamedia.component';
 import { HeroComponent } from './hero/hero.component';
 import { AllieviComponent } from './allievi/allievi.component';
 import { LoginComponent } from './login/login.component';
@@ -16,9 +17,19 @@ export const routes: Routes = [
         title: 'Scuola elementare'
     },
     {
-        path:'login/:id/:titolo',
+        path:'scuolamedia',
+        component: ScuolamediaComponent,
+        title: 'Scuola media'
+    },
+    {
+        path:'scuolaelementare/login/:id/:titolo',
         component: LoginComponent,
-        title: 'Login'
+        title: 'Login',
+    },
+    {
+        path:'scuolamedia/login/:id/:titolo',
+        component: LoginComponent,
+        title: 'Login',
     },
     {
         path:'allievi',

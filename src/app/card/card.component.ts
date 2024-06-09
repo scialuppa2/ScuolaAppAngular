@@ -14,6 +14,7 @@ export class CardComponent {
   @Input() sImgCard:string;
   @Input() sTestoCard:string;
   @Input() sTestoLinkCard:string;
+  @Input() sPathCard:string;
 
 
   sIdC=0;
@@ -21,7 +22,7 @@ export class CardComponent {
   sImgC="nd";
   sTestoC="nd";
   sTestoLinkC="nd";
-  sHrefC="/login/";
+  sPathC="nd";
 
 
   constructor(){
@@ -30,6 +31,7 @@ export class CardComponent {
     this.sImgCard = 'null';
     this.sTestoCard = 'null';
     this.sTestoLinkCard = 'null';
+    this.sPathCard = 'null';
   }
 
   ngOnInit() {
@@ -43,5 +45,7 @@ export class CardComponent {
       this.sTestoC = this.sTestoCard;
     if(this.sTestoLinkCard!="null")
       this.sTestoLinkC = this.sTestoLinkCard;
+    if(this.sPathCard!="null")
+      this.sPathC = this.sPathCard;
   }
 }

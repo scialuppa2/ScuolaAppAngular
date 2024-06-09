@@ -17,13 +17,13 @@ export class GetSezioniService {
         id:2,
         nomeSez: "Medie",
         descrSez: "Sezione dedicata alla scuola media",
-        linkSez: "Accedi"
+        linkSez: "scuolamedia"
       },
       {
         id:1,
         nomeSez: "Liceo Scientifico",
         descrSez: "Sezione dedicata al liceo scientifico",
-        linkSez: "Accedi"
+        linkSez: "liceo"
       },
     
   ];
