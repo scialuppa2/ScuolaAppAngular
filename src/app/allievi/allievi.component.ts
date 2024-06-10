@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { GetAllieviService } from '../services/get-allievi.service';
 import { Allievo } from '../allievo';
 import { NgFor } from '@angular/common';
@@ -11,19 +11,10 @@ import { NgFor } from '@angular/common';
   styleUrl: './allievi.component.css'
 })
 export class AllieviComponent implements OnInit {
-  allievi: Allievo[] = [];
+  ElencoAllievi: Allievo[] = [];
+  GetAllieviServiceInst: GetAllieviService = inject(GetAllieviService);
 
-  constructor(private allieviService: GetAllieviService) { }
-
-  ngOnInit(): void {
-    this.allieviService.getAllievi().subscribe(
-      data => {
-        this.allievi = data;
-        console.log('Dati allievi:', this.allievi);
-      },
-      error => {
-        console.error('Errore durante il recupero dei dati:', error);
-      }
-    );
+  ngOnInit() {
+    this.ElencoAllievi = this.GetAllieviServiceInst.getElencoAllievi();
   }
 }

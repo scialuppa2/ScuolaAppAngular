@@ -5,33 +5,36 @@ import { CategoriaUtente } from '../categoria-utente';
   providedIn: 'root'
 })
 export class GetCategorieService {
-  url = "http://localhost:8080/scuola/";
-  ElencoCategorie:CategoriaUtente[] = [];
 
   constructor() {}
 
-  async getAllCategorie(num: any): Promise<CategoriaUtente[]> {
-    if (this.ElencoCategorie.length === 0) {
-      const data = await fetch(this.url + num);
-      this.ElencoCategorie = await data.json();
-      console.log(this.ElencoCategorie);
-    }
-    return this.ElencoCategorie ?? [];
+  url = "http://localhost:8080/scuola/";
+  ElencoCategorie:CategoriaUtente[] = [];
+
+  async getAllCategorie(num:any): Promise<CategoriaUtente[]> { 
+    const data = await fetch(this.url + num);
+    this.ElencoCategorie = await data.json();
+    console.log(this.ElencoCategorie);
+    return this.ElencoCategorie ?? []; 
   }
 
-  getCategoriaById(iId: Number): CategoriaUtente | undefined {
-    if (this.ElencoCategorie.length == 0)
+  getCategoriaById(iId:Number):CategoriaUtente | undefined{
+    if(this.ElencoCategorie.length==0)
       return undefined;
     else
-      return this.ElencoCategorie.find(categoria => categoria.id == iId);
+    return this.ElencoCategorie.find(categoria => categoria.id==iId)
   }
 
-  async getCategoriaById2(id: number): Promise<CategoriaUtente | null> {
-    const data = await fetch(`${this.url}/${id}`);
-    if (data.ok) {
-      return await data.json();
+  async getCategoriaById2(iId:Number):Promise<CategoriaUtente | undefined> {
+    if(this.ElencoCategorie.length==0){
+      console.log("Vettore vuoto")
+      const data = await fetch(this.url + 1);
+    this.ElencoCategorie = await data.json();
+    console.log(this.ElencoCategorie);
+    return this.ElencoCategorie.find(categoria => categoria.id==iId);
+    } else{
+      return this.ElencoCategorie.find(categoria => categoria.id==iId);
     }
-    return null;
   }
 
   async getAllCategorie2(num: number): Promise<CategoriaUtente[]> {
