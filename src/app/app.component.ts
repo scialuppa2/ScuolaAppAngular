@@ -12,7 +12,7 @@ import { ScuolaelementareComponent } from './scuolaelementare/scuolaelementare.c
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
+    RouterOutlet,
     NavbarComponent, 
     CardComponent, 
     ScuolaelementareComponent, 

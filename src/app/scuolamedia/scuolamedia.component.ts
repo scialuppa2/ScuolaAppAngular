@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { GetCategorieService } from '../services/get-categorie.service';
-import { CategoriaUtente } from '../categoria-utente';
+import { CategoriaUtente } from '../interfaces/categoria-utente';
 import { CardComponent } from '../card/card.component';
 import { NgFor, NgIf } from '@angular/common';
 

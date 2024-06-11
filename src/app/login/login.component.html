@@ -1,18 +1,22 @@
 <div class="container">
   <div *ngIf="categoria">
-    <h1>Benvenuto nel Login di {{ categoria.nomeCat }}</h1>
+    <h1>Login di accesso per {{ categoria.nomeCat }}</h1>
     <p>{{ categoria.descrCat }}</p>
   </div>
 
   <form (ngSubmit)="submitForm()">
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" required>
+    <div class="mb-3">
+      <label class="form-label" for="nome_utente">Username:</label>
+      <input class="form-control" type="text" id="nome_utente" [(ngModel)]="nome_utente" name="nome_utente" required>
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required>
+    <div class="mb-3">
+      <label class="form-label" for="password">Password:</label>
+      <input class="form-control" type="password" id="password" [(ngModel)]="password" name="password" required>
     </div>
-    <button type="submit">Login</button>
+    <button class="btn btn-primary" type="submit">Login</button>
   </form>
+
+  <div *ngIf="loginFailed" class="alert alert-danger" role="alert">
+    Login failed. Please check your credentials and try again.
+  </div>
 </div>

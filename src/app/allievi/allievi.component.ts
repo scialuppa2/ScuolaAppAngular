@@ -1,20 +1,25 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GetAllieviService } from '../services/get-allievi.service';
-import { Allievo } from '../allievo';
-import { NgFor } from '@angular/common';
+import { Allievo } from '../interfaces/allievo';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-allievi',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgIf, NgFor],
   templateUrl: './allievi.component.html',
-  styleUrl: './allievi.component.css'
+  styleUrls: ['./allievi.component.css']
 })
 export class AllieviComponent implements OnInit {
-  ElencoAllievi: Allievo[] = [];
-  GetAllieviServiceInst: GetAllieviService = inject(GetAllieviService);
+  allievi: Allievo[] = [];
 
-  ngOnInit() {
-    this.ElencoAllievi = this.GetAllieviServiceInst.getElencoAllievi();
+  constructor(private getAllieviService: GetAllieviService) { }
+
+  async ngOnInit() {
+    this.allievi = await this.getAllieviService.getAllAllievi();
   }
 }
+
+
+
+

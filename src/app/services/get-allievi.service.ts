@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Allievo } from '../allievo';
-import { Utente } from '../utente';
+import { Allievo } from '../interfaces/allievo';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,26 +10,26 @@ export class GetAllieviService {
 
   constructor() { }
 
-  async getAllAllievi(Docente:Utente): Promise<Allievo[]>{
-    const data = await fetch(this.url, {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(Docente)
-    });
-    if (!data.ok) {
-      throw new Error('Errore durante il recupero degli allievi');
-    }
+  async getAllAllievi(): Promise<Allievo[]> {
+    try {
+      const response = await fetch(this.url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
 
-    const allievi = await data.json();
-    this.ElencoAllievi = allievi;
-    console.log(allievi)
-    return allievi;
-  } catch (error:any) {
-    console.error('Si è verificato un errore:', error);
-    return [];
+      if (!response.ok) {
+        throw new Error('Errore durante il recupero degli allievi');
+      }
+
+      this.ElencoAllievi = await response.json();
+      return this.ElencoAllievi;
+    } catch (error) {
+      console.error('Si è verificato un errore:', error);
+      return [];
+    }
   }
 
   getElencoAllievi(): Allievo[] {

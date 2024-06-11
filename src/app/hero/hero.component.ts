@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { SezioneScuola } from '../sezione-scuola';
+import { SezioneScuola } from '../interfaces/sezione-scuola';
 import { GetSezioniService } from '../services/get-sezioni.service';
 import { SectionComponent } from '../section/section.component';
 import { NgFor } from '@angular/common';

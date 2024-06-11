@@ -1,19 +1,29 @@
-<div class="container">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let allievo of ElencoAllievi">
-        <div class="card mb-4">
-          <div class="card-header">
-            {{ allievo.nome }} {{ allievo.cognome }}
-          </div>
-          <div class="card-body">
-            <p>Codice Fiscale: {{ allievo.codiceFiscale }}</p>
-            <p>Data di Nascita: {{ allievo.dataDiNascita  }}</p>
-            <p>Luogo di Nascita: {{ allievo.luogoDiNascita }}</p>
-            <p>Classe: {{ allievo.livelloClasse + allievo.sezioneClasse }}</p>
-            <p>Email: {{ allievo.email }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+<div class="container mt-5">
+  <h2>Lista Allievi</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Codice Fiscale</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Data di Nascita</th>
+        <th>Luogo di Nascita</th>
+        <th>Email</th>
+        <th>Classe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let allievo of allievi">
+        <td>{{ allievo.id }}</td>
+        <td>{{ allievo.codiceFiscale }}</td>
+        <td>{{ allievo.nome }}</td>
+        <td>{{ allievo.cognome }}</td>
+        <td>{{ allievo.dataDiNascita }}</td>
+        <td>{{ allievo.luogoDiNascita }}</td>
+        <td>{{ allievo.email }}</td>
+        <td>{{ allievo.livelloClasse + allievo.sezioneClasse }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

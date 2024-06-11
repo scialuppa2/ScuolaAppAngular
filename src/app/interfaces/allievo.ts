@@ -1,5 +1,5 @@
 export interface Allievo {
-    ID: number;
+    id: number;
     codiceFiscale: string;
     nome: string;
     cognome: string;
