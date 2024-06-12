@@ -22,7 +22,7 @@ export class LoginComponent {
   
   nome_utente: string = '';
   password: string = '';
-  loginFailed: boolean = false;
+  errorMessage: string = '';
 
   uMioUtente: Utente = {
     mailUtente: '',
@@ -43,21 +43,14 @@ export class LoginComponent {
     console.log(this.categoria?.nomeCat);
   }
 
-  submitForm() {
-    this.authService.login(this.nome_utente, this.password).subscribe(
-      response => {
-        if (response.success) {
-          console.log('Login successful');
-          this.router.navigate(['/allievi']);
-        } else {
-          console.log('Login failed: ' + response.message);
-          this.loginFailed = true;
-        }
-      },
-      error => {
-        console.error('Login error: ', error);
-        this.loginFailed = true;
-      }
-    );
+  async submitForm() {
+    try {
+      const result = await this.authService.login(this.nome_utente, this.password);
+      console.log('Login successful', result);
+      // Reindirizza al componente Allievi dopo il login
+      this.router.navigate(['/allievi']);
+    } catch (error) {
+      this.errorMessage = 'Login fallito. Per favore, controlla le tue credenziali.';
+    }
   }
 }

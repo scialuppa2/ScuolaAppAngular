@@ -16,7 +16,7 @@
     <button class="btn btn-primary" type="submit">Login</button>
   </form>
 
-  <div *ngIf="loginFailed" class="alert alert-danger" role="alert">
-    Login failed. Please check your credentials and try again.
+  <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+    {{ errorMessage }}
   </div>
 </div>
